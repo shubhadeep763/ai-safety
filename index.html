@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubhadeep Chakraborty — AI Safety & Evaluation</title>
+<meta name="description" content="Shubhadeep Chakraborty — physics PhD candidate at ICTS-TIFR working on AI evaluation and red-teaming: adversarial testing of frontier language models, benchmark design, and verification.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16181D;
+    --paper:#F8F7F3;
+    --card:#FFFFFF;
+    --muted:#565B63;
+    --faint:#8A8E95;
+    --line:#E4E2DA;
+    --accent:#B4532A;          /* burnt orange */
+    --accent-wash:rgba(180,83,42,.09);
+    --font-display:'Space Grotesk',system-ui,sans-serif;
+    --font-body:'Source Serif 4',Georgia,serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --maxw:760px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#ECEAE4;
+      --paper:#131418;
+      --card:#1B1D22;
+      --muted:#A8ACB3;
+      --faint:#7C8088;
+      --line:#2B2E35;
+      --accent:#E58A5C;
+      --accent-wash:rgba(229,138,92,.12);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#ECEAE4;
+    --paper:#131418;
+    --card:#1B1D22;
+    --muted:#A8ACB3;
+    --faint:#7C8088;
+    --line:#2B2E35;
+    --accent:#E58A5C;
+    --accent-wash:rgba(229,138,92,.12);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:18px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s ease;}
+  a:hover{border-bottom-color:var(--accent);}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:84px 0 12px;}
+  .eyebrow{
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 18px;
+  }
+  h1{
+    font-family:var(--font-display);font-weight:600;
+    font-size:clamp(36px,7vw,58px);line-height:1.03;letter-spacing:-.02em;margin:0 0 16px;
+  }
+  .tagline{font-size:clamp(18px,2.6vw,21px);color:var(--muted);max-width:640px;margin:0 0 22px;}
+  .meta{font-family:var(--font-mono);font-size:13.5px;color:var(--faint);margin:0 0 24px;}
+  .links{display:flex;flex-wrap:wrap;gap:10px;}
+  .links a{
+    font-family:var(--font-display);font-size:14px;font-weight:500;
+    border:1px solid var(--line);border-radius:999px;padding:7px 15px;
+    color:var(--ink);background:var(--card);
+  }
+  .links a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-wash);}
+
+  /* ---------- sections ---------- */
+  section{padding:44px 0 4px;}
+  h2{
+    font-family:var(--font-display);font-weight:600;font-size:13px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
+    margin:0 0 20px;padding-bottom:10px;border-bottom:1px solid var(--line);
+  }
+  p{margin:0 0 16px;}
+  .lede{font-size:19px;}
+
+  .entry{margin:0 0 28px;}
+  .entry-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;}
+  .entry h3{font-family:var(--font-display);font-weight:600;font-size:19px;line-height:1.3;margin:0;}
+  .when{font-family:var(--font-mono);font-size:13px;color:var(--faint);white-space:nowrap;}
+  .entry-sub{font-family:var(--font-mono);font-size:13.5px;color:var(--accent);margin:2px 0 8px;}
+  .entry p{margin:0 0 8px;color:var(--ink);}
+  .entry ul{margin:6px 0 0;padding-left:20px;}
+  .entry li{margin:0 0 6px;}
+
+  .bridge{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:4px 0 12px;}
+  .bridge div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+  .bridge h4{font-family:var(--font-display);font-weight:600;font-size:15.5px;margin:0 0 6px;}
+  .bridge p{font-size:16px;color:var(--muted);margin:0;line-height:1.55;}
+
+  .tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0;}
+  .tags li{
+    font-family:var(--font-mono);font-size:13px;
+    background:var(--accent-wash);color:var(--ink);border-radius:6px;padding:4px 10px;
+  }
+
+  footer{padding:56px 0 64px;margin-top:36px;border-top:1px solid var(--line);
+    font-family:var(--font-mono);font-size:13px;color:var(--faint);}
+  footer p{margin:0 0 6px;}
+
+  @media (max-width:520px){
+    body{font-size:17px;}
+    header.hero{padding-top:56px;}
+    .wrap{padding:0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow">AI Safety · Evaluation · Red-teaming</p>
+  <h1>Shubhadeep Chakraborty</h1>
+  <p class="tagline">Physics PhD candidate at ICTS-TIFR. I test where frontier language models break: adversarial red-teaming in a low-resource language and research-level evaluation problems built to be graded objectively.</p>
+  <p class="meta">Bengaluru, India · PhD, non-equilibrium statistical physics</p>
+  <nav class="links" aria-label="Profiles">
+    <a href="mailto:shubhadeep.chakraborty@icts.res.in">Email</a>
+    <a href="https://github.com/shubhadeep763">GitHub</a>
+    <a href="https://scholar.google.com/citations?user=WhFK850AAAAJ&amp;hl=en">Google Scholar</a>
+    <a href="https://shubhadeep763.github.io/">Physics research</a>
+  </nav>
+</header>
+
+<main>
+
+<section id="about">
+  <h2>Why AI safety</h2>
+  <!-- DRAFT: rewrite this section in your own words before linking the site in an application. -->
+  <p class="lede">Over the past year I've moved from physics into evaluating frontier AI systems, first as a benchmark author and now as a red-teamer. Both jobs have the same core task: work out what a model can actually be trusted to do, and build tests whose results can't be argued with.</p>
+  <p>Red-teaming models in Assamese made one question concrete for me: if safety behaviour is trained and measured mostly in English, how much of it carries over to the languages that most of the world speaks? Authoring physics benchmarks taught me how easy it is to write a test that seems hard but measures the wrong thing, and how much work goes into making a failure unambiguous.</p>
+  <p>I want to understand the wider picture of how advanced AI could go wrong and which interventions matter: evaluations, governance, and the strategic choices labs and states face. I also want to work out where someone with my background can contribute most.</p>
+</section>
+
+<section id="experience">
+  <h2>AI evaluation &amp; red-teaming</h2>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>AI Safety Red-Teaming — Assamese Language Expert</h3>
+      <span class="when">2026 – present</span>
+    </div>
+    <p class="entry-sub">Mercor · contract, remote</p>
+    <ul>
+      <li>Write original adversarial prompts and multi-turn attack scenarios in Assamese to red-team frontier large language models, probing for unsafe, policy-violating and factually unreliable behaviour in a low-resource language.</li>
+      <li>Design each probe so that failure is unambiguous, reproducible and objectively gradeable, aimed at the regime where strong models fail more often than they succeed.</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Physics Benchmark Author &amp; Evaluator</h3>
+      <span class="when">2026</span>
+    </div>
+    <p class="entry-sub">Turing · contract, remote</p>
+    <ul>
+      <li>Wrote original research-level physics problems across classical mechanics, statistical physics and quantum systems, designed to test real understanding rather than recall.</li>
+      <li>Wrote step-by-step solutions and grading criteria, ran candidates against frontier models, analysed their failure modes, and iterated until each problem met its difficulty target.</li>
+      <li>Reviewed problems and model responses for correctness, ambiguity and solvability. Five task submissions were accepted.</li>
+    </ul>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>AI Training-Data Contractor — STEM Domain Expert</h3>
+      <span class="when">2026</span>
+    </div>
+    <p class="entry-sub">micro1 · contract, remote</p>
+    <ul>
+      <li>Curated and reviewed real-world technical artifacts for a multimodal training-data pipeline against quality, domain-classification and data-safety standards.</li>
+    </ul>
+  </article>
+</section>
+
+<section id="bridge">
+  <h2>What I bring from physics</h2>
+  <div class="bridge">
+    <div>
+      <h4>Independent verification</h4>
+      <p>My research checks every analytical prediction against simulations I build myself. I apply the same habit to grading model outputs.</p>
+    </div>
+    <div>
+      <h4>Adversarial problem design</h4>
+      <p>I know how to pose a question with exactly one defensible answer, and how to tell real failures from artifacts of the test.</p>
+    </div>
+    <div>
+      <h4>Working from first principles</h4>
+      <p>I take a messy system, find the quantities that matter, and model them quantitatively.</p>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <h2>Research background</h2>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Hydrodynamics of the Fermi–Pasta–Ulam–Tsingou chain</h3>
+      <span class="when">2026</span>
+    </div>
+    <p>Derived Euler and Navier–Stokes–Fourier hydrodynamics for a nonlinear lattice from its microscopic dynamics, solved the Riemann problem analytically, and verified the predictions against large-scale molecular-dynamics simulations in Python. <a href="https://arxiv.org/abs/2606.04674">arXiv:2606.04674</a></p>
+  </article>
+
+  <article class="entry">
+    <div class="entry-head">
+      <h3>Jamming of persistent active particles in 1D</h3>
+      <span class="when">2025 – present</span>
+    </div>
+    <p>Exact steady-state cluster statistics from a mapping to constrained lattice paths, plus first-passage scaling of the jamming time, both checked against event-driven simulations. Presented at ISPCM 2026.</p>
+  </article>
+
+  <p>Earlier work covers quantum walks and query complexity, and spin transport in the Heisenberg chain. More on my <a href="https://shubhadeep763.github.io/">physics site</a>.</p>
+</section>
+
+<section id="skills">
+  <h2>Tools</h2>
+  <ul class="tags">
+    <li>Python</li><li>NumPy / SciPy</li><li>Qiskit</li><li>Git / GitHub</li>
+    <li>Docker</li><li>Linux / HPC</li><li>LLM evaluation</li><li>Rubric &amp; grader design</li>
+    <li>English · Assamese</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p><a href="mailto:shubhadeep.chakraborty@icts.res.in">shubhadeep.chakraborty@icts.res.in</a></p>
+  <p>ICTS-TIFR, Bengaluru, India</p>
+  <p>Last updated October 2026</p>
+</footer>
+
+</div>
+</body>
+</html>
