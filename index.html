@@ -101,6 +101,9 @@
   .entry p{margin:0 0 8px;color:var(--ink);}
   .entry ul{margin:6px 0 0;padding-left:20px;}
   .entry li{margin:0 0 6px;}
+  .entry li ul{margin:6px 0 0;}
+  .entry li li{margin:0 0 4px;font-size:16.5px;color:var(--muted);}
+  .entry li li strong{color:var(--ink);font-weight:600;}
 
   .bridge{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:4px 0 12px;}
   .bridge div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
@@ -163,6 +166,14 @@
     <ul>
       <li>Write original adversarial prompts and multi-turn attack scenarios in Assamese to red-team frontier large language models, probing for unsafe, policy-violating and factually unreliable behaviour in a low-resource language.</li>
       <li>Design each probe so that failure is unambiguous, reproducible and objectively gradeable, aimed at the regime where strong models fail more often than they succeed.</li>
+      <li>Attack techniques in my toolkit:
+        <ul>
+          <li><strong>Prompt injection:</strong> hiding instructions in content the model processes so they override its intended instructions.</li>
+          <li><strong>Autocomplete attacks:</strong> starting a response for the model and getting it to carry on past where it would normally refuse.</li>
+          <li><strong>GOAT-style multi-turn attacks:</strong> following the Generative Offensive Agent Tester approach, steering a conversation over many turns and switching tactics as the model responds.</li>
+          <li><strong>Encoding &amp; obfuscation:</strong> disguising a harmful request through encodings, character substitutions or indirect phrasing so it gets past safety filters.</li>
+        </ul>
+      </li>
     </ul>
   </article>
 
@@ -235,7 +246,7 @@
   <h2>Tools</h2>
   <ul class="tags">
     <li>Python</li><li>NumPy / SciPy</li><li>Qiskit</li><li>Git / GitHub</li>
-    <li>Docker</li><li>Linux / HPC</li><li>LLM evaluation</li><li>Rubric &amp; grader design</li>
+    <li>Docker</li><li>Linux / HPC</li><li>LLM evaluation</li><li>LLM red-teaming</li><li>Rubric &amp; grader design</li>
     <li>English · Assamese</li>
   </ul>
 </section>
